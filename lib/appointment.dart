@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'footer.dart';
 import "summary.dart";
+import "timeline.dart";
 
 class Appointment extends StatelessWidget {
   const Appointment({super.key});
@@ -34,10 +35,14 @@ class Appointment extends StatelessWidget {
           ),
         ),
       ),
-      body: const Column(children: [
-        Summary(),
-        AddServiceButton(),
-      ]),
+      body: const SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(children: [
+          Timeline(),
+          Summary(),
+          AddServiceButton(),
+        ]),
+      ),
       bottomNavigationBar: const Footer(),
     );
   }
