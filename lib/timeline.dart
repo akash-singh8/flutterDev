@@ -1,7 +1,20 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 
-class Timeline extends StatelessWidget {
+class Timeline extends StatefulWidget {
   const Timeline({super.key});
+
+  @override
+  _TimelineState createState() => _TimelineState();
+}
+
+class _TimelineState extends State<Timeline> {
+  int _isSelected = 0; // Moved the state here
+
+  void _updateSelection(int index) {
+    setState(() {
+      _isSelected = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,23 +26,47 @@ class Timeline extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.symmetric(vertical: 16),
-          child: const SingleChildScrollView(
-            scrollDirection:
-                Axis.horizontal, // Set scrolling direction to horizontal
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                SizedBox(width: 11),
-                Time(timeText: "1:15 PM"),
-                SizedBox(width: 15),
-                Time(timeText: "1:30 PM"),
-                SizedBox(width: 15),
-                Time(timeText: "1:45 PM"),
-                SizedBox(width: 15),
-                Time(timeText: "2:00 PM"),
-                SizedBox(width: 15),
-                Time(timeText: "2:15 PM"),
-                SizedBox(width: 11),
+                const SizedBox(width: 11),
+                Time(
+                  index: 0,
+                  timeText: "1:15 PM",
+                  isSelected: _isSelected == 0,
+                  onSelect: _updateSelection,
+                ),
+                const SizedBox(width: 15),
+                Time(
+                  index: 1,
+                  timeText: "1:30 PM",
+                  isSelected: _isSelected == 1,
+                  onSelect: _updateSelection,
+                ),
+                const SizedBox(width: 15),
+                Time(
+                  index: 2,
+                  timeText: "1:45 PM",
+                  isSelected: _isSelected == 2,
+                  onSelect: _updateSelection,
+                ),
+                const SizedBox(width: 15),
+                Time(
+                  index: 3,
+                  timeText: "2:00 PM",
+                  isSelected: _isSelected == 3,
+                  onSelect: _updateSelection,
+                ),
+                const SizedBox(width: 15),
+                Time(
+                  index: 4,
+                  timeText: "2:15 PM",
+                  isSelected: _isSelected == 4,
+                  onSelect: _updateSelection,
+                ),
+                const SizedBox(width: 11),
               ],
             ),
           ),
@@ -43,39 +80,37 @@ class Timeline extends StatelessWidget {
   }
 }
 
-class Time extends StatefulWidget {
+class Time extends StatelessWidget {
   final String timeText;
+  final int index;
+  final bool isSelected;
+  final Function(int) onSelect;
 
-  const Time({Key? key, required this.timeText}) : super(key: key);
-
-  @override
-  State<Time> createState() => _TimeState();
-}
-
-class _TimeState extends State<Time> {
-  bool _isSelected = false;
+  const Time({
+    Key? key,
+    required this.timeText,
+    required this.index,
+    required this.isSelected,
+    required this.onSelect,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          _isSelected = !_isSelected;
-        });
-      },
+      onTap: () => onSelect(index),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
         decoration: BoxDecoration(
-          color: _isSelected ? const Color(0xFF218CAC) : Colors.transparent,
+          color: isSelected ? const Color(0xFF218CAC) : Colors.transparent,
           border: Border.all(color: Colors.black12),
           borderRadius: BorderRadius.circular(22),
         ),
         child: Text(
-          widget.timeText,
+          timeText,
           style: TextStyle(
             fontWeight: FontWeight.w500,
             fontSize: 15,
-            color: _isSelected ? Colors.white : Colors.black45,
+            color: isSelected ? Colors.white : Colors.black45,
           ),
         ),
       ),
