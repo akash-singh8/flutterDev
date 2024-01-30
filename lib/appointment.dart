@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'footer.dart';
+import "summary.dart";
 
 class Appointment extends StatelessWidget {
   const Appointment({super.key});
@@ -33,12 +34,10 @@ class Appointment extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {},
-          child: const Text("Heyy welcome"),
-        ),
-      ),
+      body: const Column(children: [
+        Summary(),
+        AddServiceButton(),
+      ]),
       bottomNavigationBar: const Footer(),
     );
   }
