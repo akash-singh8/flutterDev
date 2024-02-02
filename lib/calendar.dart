@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import "package:appointment/helpers/colors.dart";
+import "package:appointment/helpers/text_styles.dart";
 
 class Calendar extends StatefulWidget {
   const Calendar({super.key});
@@ -51,7 +52,7 @@ class _CalendarState extends State<Calendar> {
         children: [
           Text(
             "$month $year",
-            style: const TextStyle(
+            style: TextStyles.medium(
               fontSize: 18,
               color: AppColors.grey,
             ),
@@ -63,20 +64,20 @@ class _CalendarState extends State<Calendar> {
             rowHeight: 48,
             daysOfWeekHeight: 40,
             headerVisible: false,
-            daysOfWeekStyle: const DaysOfWeekStyle(
-                weekdayStyle: TextStyle(color: AppColors.grey),
-                weekendStyle: TextStyle(color: AppColors.grey)),
+            daysOfWeekStyle: DaysOfWeekStyle(
+                weekdayStyle: TextStyles.regular(color: AppColors.grey),
+                weekendStyle: TextStyles.regular(color: AppColors.grey)),
             selectedDayPredicate: (day) => isSameDay(day, today),
-            calendarStyle: const CalendarStyle(
-              selectedDecoration: BoxDecoration(
+            calendarStyle: CalendarStyle(
+              selectedDecoration: const BoxDecoration(
                 color: AppColors.orange,
                 shape: BoxShape.circle,
               ),
-              todayDecoration: BoxDecoration(
+              todayDecoration: const BoxDecoration(
                 color: AppColors.lightOrange,
                 shape: BoxShape.circle,
               ),
-              defaultTextStyle: TextStyle(color: AppColors.grey),
+              defaultTextStyle: TextStyles.regular(color: AppColors.grey),
             ),
             firstDay: DateTime.now(),
             lastDay: DateTime.utc(today.year, today.month,

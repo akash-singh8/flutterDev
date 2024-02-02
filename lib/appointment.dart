@@ -1,5 +1,6 @@
 import "package:appointment/helpers/colors.dart";
 import 'package:flutter/material.dart';
+import "package:appointment/helpers/text_styles.dart";
 import 'footer.dart';
 import "summary.dart";
 import "timeline.dart";
@@ -17,15 +18,14 @@ class Appointment extends StatelessWidget {
           onTap: () {
             Navigator.pop(context);
           },
-          child: const Row(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(Icons.arrow_back, color: AppColors.darkBlue),
-              SizedBox(width: 10),
+              const Icon(Icons.arrow_back, color: AppColors.darkBlue),
+              const SizedBox(width: 10),
               Text(
                 "Book an Appointment",
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
+                style: TextStyles.semibold(
                   fontSize: 18,
                   color: AppColors.darkBlue,
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import "package:appointment/helpers/colors.dart";
+import "package:appointment/helpers/text_styles.dart";
 
 class Timeline extends StatefulWidget {
   const Timeline({super.key});
@@ -108,8 +109,7 @@ class Time extends StatelessWidget {
         ),
         child: Text(
           timeText,
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
+          style: TextStyles.medium(
             fontSize: 15,
             color: isSelected ? Colors.white : AppColors.grey,
           ),

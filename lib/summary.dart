@@ -1,5 +1,6 @@
 import "package:appointment/helpers/colors.dart";
 import "package:flutter/material.dart";
+import "package:appointment/helpers/text_styles.dart";
 
 class Summary extends StatelessWidget {
   const Summary({super.key});
@@ -11,9 +12,9 @@ class Summary extends StatelessWidget {
       margin: const EdgeInsets.fromLTRB(18, 18, 18, 4),
       decoration: BoxDecoration(
         color: AppColors.lightGrey,
-        borderRadius: BorderRadius.circular(12), // Add border radius
+        borderRadius: BorderRadius.circular(12),
       ),
-      child: const Column(
+      child: Column(
         children: [
           Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -21,8 +22,7 @@ class Summary extends StatelessWidget {
               children: [
                 Text(
                   "Haircut Only",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
+                  style: TextStyles.medium(
                     fontSize: 17,
                     color: AppColors.darkBlue,
                   ),
@@ -32,39 +32,42 @@ class Summary extends StatelessWidget {
                   children: [
                     Text(
                       "\$50.00",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
+                      style: TextStyles.medium(
                         fontSize: 17,
                         color: AppColors.darkBlue,
                       ),
                     ),
                     Text(
                       "1:15 PM - 2:15 PM",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12,
-                          color: AppColors.grey,
-                          letterSpacing: 0,
-                          height: 1.9),
+                      style: TextStyles.regular(
+                        fontSize: 12,
+                        color: AppColors.grey,
+                      ),
                     )
                   ],
                 )
               ]),
-          SizedBox(height: 9),
-          Divider(
+          const SizedBox(height: 9),
+          const Divider(
             color: AppColors.heavyShadow,
             thickness: 1,
           ),
-          SizedBox(height: 9),
+          const SizedBox(height: 9),
           Row(
             children: [
               Text("Staff:",
-                  style: TextStyle(color: AppColors.darkBlue, fontSize: 15)),
-              SizedBox(width: 10),
-              Icon(Icons.person_2_rounded, color: AppColors.lightOrange),
-              SizedBox(width: 4),
+                  style: TextStyles.regular(
+                    color: AppColors.darkGrey,
+                    fontSize: 15,
+                  )),
+              const SizedBox(width: 10),
+              const Icon(Icons.person_2_rounded, color: AppColors.lightOrange),
+              const SizedBox(width: 4),
               Text("Akash Singh",
-                  style: TextStyle(color: AppColors.darkBlue, fontSize: 15))
+                  style: TextStyles.regular(
+                    color: AppColors.darkBlue,
+                    fontSize: 15,
+                  ))
             ],
           )
         ],
