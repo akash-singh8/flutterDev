@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "package:appointment/helpers/colors.dart";
 
 class Timeline extends StatefulWidget {
   const Timeline({super.key});
@@ -21,7 +22,7 @@ class _TimelineState extends State<Timeline> {
     return Column(
       children: [
         const Divider(
-          color: Colors.black12,
+          color: AppColors.lightShadow,
           thickness: 1,
         ),
         Container(
@@ -72,7 +73,7 @@ class _TimelineState extends State<Timeline> {
           ),
         ),
         const Divider(
-          color: Colors.black12,
+          color: AppColors.lightShadow,
           thickness: 1,
         ),
       ],
@@ -101,8 +102,8 @@ class Time extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
         decoration: BoxDecoration(
-          color: isSelected ? const Color(0xFF218CAC) : Colors.transparent,
-          border: Border.all(color: Colors.black12),
+          color: isSelected ? AppColors.orange : Colors.transparent,
+          border: Border.all(color: AppColors.heavyShadow),
           borderRadius: BorderRadius.circular(22),
         ),
         child: Text(
@@ -110,7 +111,7 @@ class Time extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.w500,
             fontSize: 15,
-            color: isSelected ? Colors.white : Colors.black45,
+            color: isSelected ? Colors.white : AppColors.grey,
           ),
         ),
       ),

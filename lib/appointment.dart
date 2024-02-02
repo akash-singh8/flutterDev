@@ -1,3 +1,4 @@
+import "package:appointment/helpers/colors.dart";
 import 'package:flutter/material.dart';
 import 'footer.dart';
 import "summary.dart";
@@ -19,11 +20,15 @@ class Appointment extends StatelessWidget {
           child: const Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(Icons.arrow_back),
+              Icon(Icons.arrow_back, color: AppColors.darkBlue),
               SizedBox(width: 10),
               Text(
                 "Book an Appointment",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18,
+                  color: AppColors.darkBlue,
+                ),
               ),
             ],
           ),

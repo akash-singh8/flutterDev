@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:appointment/helpers/colors.dart";
 
 class Footer extends StatelessWidget {
   const Footer({super.key});
@@ -23,13 +24,15 @@ class Footer extends StatelessWidget {
                       Text(
                         '\$50.00',
                         style: TextStyle(
+                            color: AppColors.darkBlue,
                             fontWeight: FontWeight.bold,
                             fontSize: 19,
                             height: 1),
                       ),
                       Text(
                         "1h",
-                        style: TextStyle(fontSize: 10, height: 2.2),
+                        style: TextStyle(
+                            fontSize: 10, height: 2.2, color: AppColors.grey),
                         textAlign: TextAlign.left,
                       ),
                     ],
@@ -64,8 +67,10 @@ class Button extends StatelessWidget {
             // Your button action here
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFF218CAC), // Background color
-            foregroundColor: Colors.white, // Text color
+            backgroundColor: AppColors.orange, // Background color
+            foregroundColor: AppColors.white, // Text color
+            textStyle:
+                const TextStyle(fontSize: 15.4, fontWeight: FontWeight.w600),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0), // Button border radius
             ),
@@ -88,7 +93,7 @@ class BottomText extends StatelessWidget {
         style: TextStyle(
           // Default style for the whole text
           fontSize: 11,
-          color: Colors.black, // Default text color
+          color: AppColors.darkBlue, // Default text color
         ),
         children: <TextSpan>[
           TextSpan(
@@ -98,7 +103,7 @@ class BottomText extends StatelessWidget {
           TextSpan(
             text: 'here.',
             style: TextStyle(
-                color: Color(0xFF218CAC),
+                color: AppColors.skyblue,
                 fontWeight: FontWeight.w500), // Style for 'here'
           ),
         ],

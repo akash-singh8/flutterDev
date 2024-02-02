@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import "package:appointment/helpers/colors.dart";
 
 class Calendar extends StatefulWidget {
   const Calendar({super.key});
@@ -50,7 +51,10 @@ class _CalendarState extends State<Calendar> {
         children: [
           Text(
             "$month $year",
-            style: const TextStyle(fontSize: 18, color: Colors.black54),
+            style: const TextStyle(
+              fontSize: 18,
+              color: AppColors.grey,
+            ),
           ),
           const SizedBox(height: 14),
           TableCalendar(
@@ -60,21 +64,19 @@ class _CalendarState extends State<Calendar> {
             daysOfWeekHeight: 40,
             headerVisible: false,
             daysOfWeekStyle: const DaysOfWeekStyle(
-                weekdayStyle: TextStyle(color: Colors.black45),
-                weekendStyle: TextStyle(color: Colors.black45)),
+                weekdayStyle: TextStyle(color: AppColors.grey),
+                weekendStyle: TextStyle(color: AppColors.grey)),
             selectedDayPredicate: (day) => isSameDay(day, today),
             calendarStyle: const CalendarStyle(
-              // Customize the decoration for the selected day
               selectedDecoration: BoxDecoration(
-                color: Color(0xFF218CAC), // Set the color for the selected day
-                shape: BoxShape.circle, // Shape of the decoration
-              ),
-              // Optionally, customize the decoration for today if you want to differentiate it from the selected day
-              todayDecoration: BoxDecoration(
-                color: Color.fromARGB(
-                    120, 33, 140, 172), // Set the color for the selected day
+                color: AppColors.orange,
                 shape: BoxShape.circle,
               ),
+              todayDecoration: BoxDecoration(
+                color: AppColors.lightOrange,
+                shape: BoxShape.circle,
+              ),
+              defaultTextStyle: TextStyle(color: AppColors.grey),
             ),
             firstDay: DateTime.now(),
             lastDay: DateTime.utc(today.year, today.month,
