@@ -1,6 +1,8 @@
 import "package:appointment/helpers/colors.dart";
 import "package:flutter/material.dart";
 import "package:appointment/helpers/text_styles.dart";
+import "package:appointment/providers/appointment_time.dart";
+import "package:provider/provider.dart";
 
 class Summary extends StatelessWidget {
   const Summary({super.key});
@@ -37,12 +39,37 @@ class Summary extends StatelessWidget {
                         color: AppColors.darkBlue,
                       ),
                     ),
-                    Text(
-                      "1:15 PM - 2:15 PM",
-                      style: TextStyles.regular(
-                        fontSize: 12,
-                        color: AppColors.grey,
-                      ),
+                    Consumer<AppointmentTimeProvider>(
+                      builder: (context, appointmentTimeProvider, child) {
+                        String timing;
+                        switch (appointmentTimeProvider.current) {
+                          case 0:
+                            timing = "1:15 PM - 2:15 PM";
+                            break;
+                          case 1:
+                            timing = "1:30 PM - 2:30 PM";
+                            break;
+                          case 2:
+                            timing = "1:45 PM - 2:45 PM";
+                            break;
+                          case 3:
+                            timing = "2:00 PM - 3:00 PM";
+                            break;
+                          case 4:
+                            timing = "2:15 PM - 3:15 PM";
+                            break;
+                          default:
+                            timing = "1:15 PM - 2:15 PM";
+                        }
+
+                        return Text(
+                          timing,
+                          style: TextStyles.regular(
+                            fontSize: 12,
+                            color: AppColors.grey,
+                          ),
+                        );
+                      },
                     )
                   ],
                 )
