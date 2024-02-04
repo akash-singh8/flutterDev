@@ -11,6 +11,7 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
+  bool twoWeeksView = true;
   DateTime today = DateTime.now();
   Map<int, String> monthNames = {
     1: 'January',
@@ -45,6 +46,11 @@ class _CalendarState extends State<Calendar> {
     String? month = monthNames[today.month];
     int year = today.year;
 
+    String buttonText = twoWeeksView ? "Show full month" : "Show 2 weeks";
+    Icon buttonIcon = twoWeeksView
+        ? const Icon(Icons.arrow_drop_down)
+        : const Icon(Icons.arrow_drop_up);
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
       child: Column(
@@ -59,6 +65,8 @@ class _CalendarState extends State<Calendar> {
           ),
           const SizedBox(height: 14),
           TableCalendar(
+            calendarFormat:
+                (twoWeeksView) ? CalendarFormat.twoWeeks : CalendarFormat.month,
             focusedDay: today,
             locale: "en_US",
             rowHeight: 48,
@@ -83,6 +91,40 @@ class _CalendarState extends State<Calendar> {
             lastDay: DateTime.utc(today.year, today.month,
                 getDaysInMonth(today.year, today.month)),
             onDaySelected: _onDaySelected,
+          ),
+          Container(
+            margin: const EdgeInsets.fromLTRB(4, 20, 4, 0),
+            child: ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  twoWeeksView = !twoWeeksView;
+                });
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                elevation: 0,
+                side: const BorderSide(color: AppColors.greyOutline, width: 1),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      buttonText,
+                      style: TextStyles.medium(
+                          color: AppColors.darkBlue, fontSize: 14),
+                    ),
+                    const SizedBox(width: 4),
+                    buttonIcon
+                  ],
+                ),
+              ),
+            ),
           ),
         ],
       ),
