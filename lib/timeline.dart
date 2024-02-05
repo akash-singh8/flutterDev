@@ -94,7 +94,7 @@ class Time extends StatelessWidget {
         decoration: BoxDecoration(
           color: isSelected ? AppColors.orange : Colors.transparent,
           border: Border.all(color: AppColors.heavyShadow),
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(8),
         ),
         child: Text(
           timeText,
@@ -123,7 +123,7 @@ class Summary extends StatelessWidget {
       margin: const EdgeInsets.fromLTRB(18, 18, 18, 4),
       decoration: BoxDecoration(
         color: AppColors.lightGrey,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
         children: [
@@ -172,7 +172,7 @@ class Summary extends StatelessWidget {
                     fontSize: 15,
                   )),
               const SizedBox(width: 10),
-              const Icon(Icons.person_2_rounded, color: AppColors.lightOrange),
+              const Icon(Icons.person_2_rounded, color: AppColors.grey),
               const SizedBox(width: 4),
               Text("Akash Singh",
                   style: TextStyles.regular(

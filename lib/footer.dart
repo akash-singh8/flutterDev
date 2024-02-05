@@ -102,7 +102,7 @@ class BottomText extends StatelessWidget {
             text: 'here.',
             style: TextStyles.medium(
               fontSize: 11,
-              color: AppColors.skyblue,
+              color: AppColors.orange,
             ),
           ),
         ],

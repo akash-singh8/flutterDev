@@ -77,15 +77,17 @@ class _CalendarState extends State<Calendar> {
                 weekendStyle: TextStyles.regular(color: AppColors.grey)),
             selectedDayPredicate: (day) => isSameDay(day, today),
             calendarStyle: CalendarStyle(
-              selectedDecoration: const BoxDecoration(
-                color: AppColors.orange,
-                shape: BoxShape.circle,
-              ),
-              todayDecoration: const BoxDecoration(
-                color: AppColors.lightOrange,
-                shape: BoxShape.circle,
-              ),
+              selectedDecoration: BoxDecoration(
+                  color: AppColors.orange,
+                  borderRadius: BorderRadius.circular(8)),
+              todayDecoration: const BoxDecoration(color: AppColors.white),
               defaultTextStyle: TextStyles.regular(color: AppColors.grey),
+              todayTextStyle: TextStyles.bold(
+                color: AppColors.darkBlue,
+              ),
+              selectedTextStyle: TextStyles.bold(
+                color: AppColors.white,
+              ),
             ),
             firstDay: DateTime.now(),
             lastDay: DateTime.utc(today.year, today.month,
