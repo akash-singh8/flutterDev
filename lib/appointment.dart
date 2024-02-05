@@ -2,7 +2,6 @@ import "package:appointment/helpers/colors.dart";
 import 'package:flutter/material.dart';
 import "package:appointment/helpers/text_styles.dart";
 import 'footer.dart';
-import "summary.dart";
 import "timeline.dart";
 import "calendar.dart";
 
@@ -46,8 +45,6 @@ class Appointment extends StatelessWidget {
         child: Column(children: [
           Calendar(),
           Timeline(),
-          Summary(),
-          AddServiceButton(),
         ]),
       ),
       bottomNavigationBar: const Footer(),
