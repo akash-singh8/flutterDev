@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import "package:appointment/helpers/colors.dart";
 import "package:appointment/helpers/text_styles.dart";
 
+final List<Map<String, dynamic>> timeSlots = [
+  {"index": 0, "startTime": "1:15 PM", "endTime": "2:15 PM", "price": "50.00"},
+  {"index": 1, "startTime": "1:30 PM", "endTime": "2:30 PM", "price": "40.00"},
+  {"index": 2, "startTime": "1:45 PM", "endTime": "2:45 PM", "price": "45.00"},
+  {"index": 3, "startTime": "2:00 PM", "endTime": "3:00 PM", "price": "28.00"},
+  {"index": 4, "startTime": "2:15 PM", "endTime": "3:15 PM", "price": "48.00"},
+];
+
 class Timeline extends StatefulWidget {
   const Timeline({super.key});
 
@@ -33,37 +41,19 @@ class _TimelineState extends State<Timeline> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                const SizedBox(width: 11),
-                Time(
-                    index: 0,
-                    timeText: "1:15 PM",
-                    isSelected: currentTimeIndex == 0,
-                    updateTime: updateTime),
-                const SizedBox(width: 15),
-                Time(
-                    index: 1,
-                    timeText: "1:30 PM",
-                    isSelected: currentTimeIndex == 1,
-                    updateTime: updateTime),
-                const SizedBox(width: 15),
-                Time(
-                    index: 2,
-                    timeText: "1:45 PM",
-                    isSelected: currentTimeIndex == 2,
-                    updateTime: updateTime),
-                const SizedBox(width: 15),
-                Time(
-                    index: 3,
-                    timeText: "2:00 PM",
-                    isSelected: currentTimeIndex == 3,
-                    updateTime: updateTime),
-                const SizedBox(width: 15),
-                Time(
-                    index: 4,
-                    timeText: "2:15 PM",
-                    isSelected: currentTimeIndex == 4,
-                    updateTime: updateTime),
-                const SizedBox(width: 11),
+                const SizedBox(width: 5),
+                ...timeSlots
+                    .map((timeSlot) => Padding(
+                          padding: const EdgeInsets.only(right: 8, left: 8),
+                          child: Time(
+                            index: timeSlot["index"],
+                            timeText: timeSlot["startTime"],
+                            isSelected: currentTimeIndex == timeSlot["index"],
+                            updateTime: updateTime,
+                          ),
+                        ))
+                    .toList(),
+                const SizedBox(width: 5),
               ],
             ),
           ),
@@ -128,27 +118,6 @@ class Summary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String timing;
-    switch (timeIndex) {
-      case 0:
-        timing = "1:15 PM - 2:15 PM";
-        break;
-      case 1:
-        timing = "1:30 PM - 2:30 PM";
-        break;
-      case 2:
-        timing = "1:45 PM - 2:45 PM";
-        break;
-      case 3:
-        timing = "2:00 PM - 3:00 PM";
-        break;
-      case 4:
-        timing = "2:15 PM - 3:15 PM";
-        break;
-      default:
-        timing = "1:15 PM - 2:15 PM";
-    }
-
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 20),
       margin: const EdgeInsets.fromLTRB(18, 18, 18, 4),
@@ -173,14 +142,14 @@ class Summary extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      "\$50.00",
+                      "\$${timeSlots[timeIndex]['price']}",
                       style: TextStyles.medium(
                         fontSize: 17,
                         color: AppColors.darkBlue,
                       ),
                     ),
                     Text(
-                      timing,
+                      "${timeSlots[timeIndex]["startTime"]} - ${timeSlots[timeIndex]["endTime"]}",
                       style: TextStyles.regular(
                         fontSize: 12,
                         color: AppColors.grey,
