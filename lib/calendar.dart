@@ -35,7 +35,12 @@ class _CalendarState extends State<Calendar> {
   }
 
   int getDaysInMonth(int year, int month) {
-    DateTime nextMonth = DateTime(year, month + 1, 1);
+    DateTime nextMonth;
+    if (month == 12) {
+      nextMonth = DateTime(year + 1, 1, 1);
+    } else {
+      nextMonth = DateTime(year, month + 1, 1);
+    }
     DateTime lastDayOfMonth = nextMonth.subtract(const Duration(days: 1));
 
     return lastDayOfMonth.day;
